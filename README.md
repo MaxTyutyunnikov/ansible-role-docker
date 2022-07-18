@@ -4,6 +4,10 @@
 
 An Ansible Role that installs [Docker](https://www.docker.com) on Linux.
 
+An Ansible Role that installs [Docker](https://www.docker.com) on Linux. For Ubuntu/Debian only. Docker with Nftables.
+
+Source: https://gist.github.com/goll/bdd6b43c2023f82d15729e9b0067de60.
+
 ## Requirements
 
 None.
@@ -26,6 +30,12 @@ You can control whether the package is installed, uninstalled, or at the latest 
     docker_restart_handler_state: restarted
 
 Variables to control the state of the `docker` service, and whether it should start on boot. If you're installing Docker inside a Docker container without systemd or sysvinit, you should set these to `stopped` and set the enabled variable to `no`.
+
+    docker_install_compose_plugin: false
+    docker_compose_package: docker-compose-plugin
+    docker_compose_package_state: present
+
+Docker Compose Plugin installation options. These differ from the below in that docker-compose is installed as a docker plugin (and used with `docker compose`) instead of a standalone binary.
 
     docker_install_compose: true
     docker_compose_version: "1.26.0"
@@ -112,4 +122,4 @@ The above sponsor(s) are supporting Jeff Geerling on [GitHub Sponsors](https://g
 
 ## Author Information
 
-This role was created in 2017 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
+Forked from https://github.com/geerlingguy/ansible-role-docker.
